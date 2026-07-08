@@ -35,44 +35,6 @@ Phần mềm cần có:
 - PyTorch Geometric, gồm `torch_geometric` và `torch_scatter`
 - Các gói Python: `numpy`, `traci`, `sumolib`, `libsumo`, `scipy`, `loguru`, `matplotlib`
 
-Cài SUMO trên Ubuntu:
-
-```bash
-sudo apt update
-sudo apt install sumo sumo-tools sumo-doc
-```
-
-Thiết lập `SUMO_HOME`:
-
-```bash
-export SUMO_HOME=/usr/share/sumo
-```
-
-Có thể thêm dòng trên vào `~/.bashrc` nếu muốn dùng lâu dài.
-
-Tạo môi trường Python:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-```
-
-Cài các thư viện chính:
-
-```bash
-pip install torch numpy scipy matplotlib loguru traci sumolib libsumo
-```
-
-Cài PyTorch Geometric theo phiên bản PyTorch đang dùng. Ví dụ với Torch CPU:
-
-```bash
-pip install torch_geometric
-pip install torch_scatter -f https://data.pyg.org/whl/torch-$(python -c "import torch; print(torch.__version__.split('+')[0])")+cpu.html
-```
-
-Nếu dùng CUDA, thay `+cpu` bằng phiên bản CUDA phù hợp theo hướng dẫn của PyTorch Geometric.
-
 ## Dữ Liệu Và Kịch Bản Mô Phỏng
 
 Các kịch bản SUMO nằm trong thư mục `Scenario/`, gồm:
@@ -92,10 +54,10 @@ Mỗi kịch bản thường có:
 
 ## Cách Chạy Huấn Luyện
 
-Script huấn luyện mặc định:
+Script huấn luyện:
 
 ```bash
-python Models/train.py
+python run_fed_dqn.py
 ```
 
 Mặc định script sử dụng:
@@ -160,79 +122,4 @@ python infer.py \
 
 Nếu checkpoint `q_net_best.pt` không tồn tại, `infer.py` có cơ chế thử dùng checkpoint round mới nhất trong cùng thư mục đối với một số đường dẫn mặc định.
 
-## Kết Quả Đầu Ra
 
-Khi chạy huấn luyện hoặc mô phỏng, dự án sinh ra các nhóm kết quả chính:
-
-- File monitor CSV, ví dụ `logs/test/next_or_not/0.monitor.csv` hoặc `deploy_3nodes.log.monitor.csv`, dùng để theo dõi reward trong quá trình mô phỏng.
-- File tripinfo XML, ví dụ `deploy_3nodes.tripinfo.xml`, chứa thông tin chuyến đi của xe như thời gian di chuyển, waiting time, route length.
-- Checkpoint PyTorch `.pt`, ví dụ `q_net_final.pt`, là trọng số mô hình đã học.
-- Hình tổng hợp reward, ví dụ `result.png`, `result_3nodes.png`, `result_4nodes.png`.
-
-Để vẽ reward từ log monitor:
-
-```bash
-python logs/plot_reward.py
-```
-
-Một số file kết quả mẫu đã có trong repo:
-
-```text
-result.png
-result_3nodes.png
-result_3nodes_large.png
-result_4nodes.png
-deploy_3nodes.tripinfo.xml
-deploy_4nodes.tripinfo.xml
-```
-
-## Ý Nghĩa Mô Hình
-
-Trong mỗi bước mô phỏng, môi trường SUMO trả về trạng thái của từng đèn giao thông. Mô hình đóng gói trạng thái này thành vector đặc trưng cho từng nút giao, sau đó truyền qua:
-
-1. `ObservationEncoder`: mã hóa occupancy và pha đèn hiện tại.
-2. `GAT`: trao đổi thông tin giữa các nút giao lân cận bằng attention.
-3. `Q head`: sinh giá trị Q cho từng hành động khả thi.
-4. DQN agent: chọn hành động theo epsilon-greedy khi train và chọn Q lớn nhất khi infer.
-
-Cách thiết kế này cho phép agent không chỉ phản ứng với trạng thái cục bộ tại một nút giao mà còn xét ảnh hưởng từ vùng lân cận.
-
-## Gợi Ý Bổ Sung Cho Báo Cáo/README
-
-Ngoài ba yêu cầu chính, nên bổ sung thêm:
-
-- Sơ đồ kiến trúc tổng quan: SUMO → Env Wrapper → DQN + GAT → hành động điều khiển đèn.
-- Mô tả state, action, reward để người đọc hiểu bài toán RL.
-- Bảng so sánh kết quả giữa các kịch bản hoặc giữa trước/sau khi dùng AI Agent.
-- Thông tin checkpoint nào là mô hình tốt nhất dùng để demo.
-- Các lỗi thường gặp khi chạy SUMO, đặc biệt là thiếu `SUMO_HOME` hoặc thiếu `torch_scatter`.
-
-## Lỗi Thường Gặp
-
-Thiếu `SUMO_HOME`:
-
-```text
-Please declare environment variable 'SUMO_HOME'
-```
-
-Khắc phục:
-
-```bash
-export SUMO_HOME=/usr/share/sumo
-```
-
-Thiếu `torch_scatter` hoặc sai phiên bản PyTorch:
-
-```text
-ModuleNotFoundError: No module named 'torch_scatter'
-```
-
-Khắc phục bằng cách cài lại `torch_scatter` theo đúng phiên bản Torch/CUDA.
-
-Không mở được SUMO GUI:
-
-```bash
-python infer.py --no-gui
-```
-
-hoặc kiểm tra môi trường hiển thị nếu chạy trên WSL/server.
