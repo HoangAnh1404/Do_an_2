@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-06-21 12:43:27 by Eclipse SUMO GUI Version 1.18.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="./Scenario/4nodes/env/4nodes.net.xml"/>
+        <route-files value="./Scenario/4nodes/env/../routes/vehicle.rou.xml"/>
+        <additional-files value="./Scenario/4nodes/env/../add/tls.add.xml,./Scenario/4nodes/env/ ../add/e2.add.xml"/>
+    </input>
+
+    <output>
+        <netstate-dump value="./Scenario/4nodes/env/../output/e2.netstate.xml"/>
+        <netstate-dump.precision value="2"/>
+        <summary-output value="./Scenario/4nodes/env/../output/e2_summary.output.xml"/>
+        <tripinfo-output value="./Scenario/4nodes/env/../output/e2.tripinfo.xml"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="504"/>
+        <step-length value="1.0"/>
+    </time>
+
+    <processing>
+        <lateral-resolution value="0.2"/>
+    </processing>
+
+</configuration>
+-->
+
+<tlsStates xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/tlsstates_file.xsd">
+    <tlsState time="0.00" id="J2" programID="0" phase="0" state="grrgrrgrrgGGrrGr"/>
+    <tlsState time="30.00" id="J2" programID="0" phase="1" state="grrgrrgrrgyyrryr"/>
+    <tlsState time="33.00" id="J2" programID="0" phase="2" state="gGGgrrgrrgrrrrrG"/>
+    <tlsState time="63.00" id="J2" programID="0" phase="3" state="gyygrrgrrgrrrrry"/>
+    <tlsState time="66.00" id="J2" programID="0" phase="4" state="grrgGGgrrgrrGrrr"/>
+    <tlsState time="96.00" id="J2" programID="0" phase="5" state="grrgyygrrgrryrrr"/>
+    <tlsState time="99.00" id="J2" programID="0" phase="6" state="grrgrrgGGgrrrGrr"/>
+    <tlsState time="129.00" id="J2" programID="0" phase="7" state="grrgrrgyygrrryrr"/>
+    <tlsState time="132.00" id="J2" programID="0" phase="0" state="grrgrrgrrgGGrrGr"/>
+    <tlsState time="162.00" id="J2" programID="0" phase="1" state="grrgrrgrrgyyrryr"/>
+    <tlsState time="165.00" id="J2" programID="0" phase="2" state="gGGgrrgrrgrrrrrG"/>
+    <tlsState time="195.00" id="J2" programID="0" phase="3" state="gyygrrgrrgrrrrry"/>
+    <tlsState time="198.00" id="J2" programID="0" phase="4" state="grrgGGgrrgrrGrrr"/>
+    <tlsState time="228.00" id="J2" programID="0" phase="5" state="grrgyygrrgrryrrr"/>
+    <tlsState time="231.00" id="J2" programID="0" phase="6" state="grrgrrgGGgrrrGrr"/>
+    <tlsState time="261.00" id="J2" programID="0" phase="7" state="grrgrrgyygrrryrr"/>
+    <tlsState time="264.00" id="J2" programID="0" phase="0" state="grrgrrgrrgGGrrGr"/>
+    <tlsState time="294.00" id="J2" programID="0" phase="1" state="grrgrrgrrgyyrryr"/>
+    <tlsState time="297.00" id="J2" programID="0" phase="2" state="gGGgrrgrrgrrrrrG"/>
+    <tlsState time="327.00" id="J2" programID="0" phase="3" state="gyygrrgrrgrrrrry"/>
+    <tlsState time="330.00" id="J2" programID="0" phase="4" state="grrgGGgrrgrrGrrr"/>
+    <tlsState time="360.00" id="J2" programID="0" phase="5" state="grrgyygrrgrryrrr"/>
+    <tlsState time="363.00" id="J2" programID="0" phase="6" state="grrgrrgGGgrrrGrr"/>
+    <tlsState time="393.00" id="J2" programID="0" phase="7" state="grrgrrgyygrrryrr"/>
+    <tlsState time="396.00" id="J2" programID="0" phase="0" state="grrgrrgrrgGGrrGr"/>
+    <tlsState time="426.00" id="J2" programID="0" phase="1" state="grrgrrgrrgyyrryr"/>
+    <tlsState time="429.00" id="J2" programID="0" phase="2" state="gGGgrrgrrgrrrrrG"/>
+    <tlsState time="459.00" id="J2" programID="0" phase="3" state="gyygrrgrrgrrrrry"/>
+    <tlsState time="462.00" id="J2" programID="0" phase="4" state="grrgGGgrrgrrGrrr"/>
+    <tlsState time="492.00" id="J2" programID="0" phase="5" state="grrgyygrrgrryrrr"/>
+    <tlsState time="495.00" id="J2" programID="0" phase="6" state="grrgrrgGGgrrrGrr"/>
+</tlsStates>
