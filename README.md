@@ -9,8 +9,6 @@ Hướng tiếp cận chính của dự án là kết hợp DQN với GAT theo t
 - Attention giúp mỗi nút giao học mức độ ảnh hưởng của các nút lân cận, phù hợp với bài toán điều khiển tín hiệu giao thông liên vùng.
 - Trạng thái đầu vào gồm thông tin occupancy/hàng đợi và pha đèn hiện tại; đầu ra là hành động điều khiển đèn, ví dụ `next_or_not` để quyết định giữ pha hiện tại hoặc chuyển sang pha tiếp theo.
 
-> Phạm vi README này tập trung vào mô hình DQN + GAT. Các thành phần Federated Learning trong repo không được trình bày như hướng chính của đồ án.
-
 ## Cấu Trúc Dự Án
 
 ```text
